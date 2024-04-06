@@ -1,0 +1,17 @@
+# kafka_config.yaml
+kafka:
+  bootstrap_servers:
+    - 'localhost:9092'  # Kafka 服务器地址列表
+  topic_name: 'realtime_environmental_data'  # 默认主题名称
+  consumer_group: 'data_processing_group'  # 消费者组名称
+  producer:
+    acks: 'all'  # 生产者确认模式
+    retries: 5  # 发送失败时的重试次数
+    batch_size: 16384  # 批处理大小
+    linger_ms: 1  # 发送延迟，用于批处理
+    buffer_memory: 33554432  # 总缓存大小
+  consumer:
+    enable_auto_commit: True  # 是否自动提交offset
+    auto_commit_interval_ms: 1000  # 自动提交的间隔
+    session_timeout_ms: 10000  # 会话超时
+    auto_offset_reset: 'earliest'  # 没有初始offset时的重置策略
